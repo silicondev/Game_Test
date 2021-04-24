@@ -10,7 +10,7 @@ namespace Xna_Test.Game
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (GameInstance game = new GameInstance())
             {
                 game.Run();
             }

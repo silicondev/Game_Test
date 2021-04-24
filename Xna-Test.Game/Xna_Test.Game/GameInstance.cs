@@ -14,12 +14,12 @@ namespace Xna_Test.Game
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class GameInstance : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public Game1()
+        public GameInstance()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
