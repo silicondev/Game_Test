@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Xna_Test.Artifacts.Physical.Entities;
 
 namespace Xna_Test.Game
 {
@@ -18,6 +19,8 @@ namespace Xna_Test.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        Player player;
 
         public GameInstance()
         {
@@ -46,6 +49,8 @@ namespace Xna_Test.Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            player = new Player();
 
             // TODO: use this.Content to load your game content here
         }
