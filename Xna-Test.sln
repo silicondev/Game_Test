@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xna_Test.Game", "Xna-Test.Game\Xna_Test.Game\Xna_Test.Game.csproj", "{B3382B37-EF41-4AEC-9D1A-F92F2E2EA004}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Xna_Test.GameContent", "Xna-Test.Game\Xna_Test.GameContent\Xna_Test.GameContent.contentproj", "{B9E80B16-E1FB-4206-80A7-36CEECF3E814}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3382B37-EF41-4AEC-9D1A-F92F2E2EA004}.Debug|x86.ActiveCfg = Debug|x86
+		{B3382B37-EF41-4AEC-9D1A-F92F2E2EA004}.Debug|x86.Build.0 = Debug|x86
+		{B3382B37-EF41-4AEC-9D1A-F92F2E2EA004}.Release|x86.ActiveCfg = Release|x86
+		{B3382B37-EF41-4AEC-9D1A-F92F2E2EA004}.Release|x86.Build.0 = Release|x86
+		{B9E80B16-E1FB-4206-80A7-36CEECF3E814}.Debug|x86.ActiveCfg = Debug|x86
+		{B9E80B16-E1FB-4206-80A7-36CEECF3E814}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16C0901A-6486-4EB0-BF22-B127B6955D3D}
+	EndGlobalSection
+EndGlobal
