@@ -105,7 +105,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xna-Test.Artifacts\Xna-Test.Artifacts.csproj">
+    <ProjectReference Include="..\Xna-Test.Artifacts\Xna-Test.Artifacts.csproj">
       <Project>{ca053e57-7d2a-4af9-8845-1418daa9ef59}</Project>
       <Name>Xna-Test.Artifacts</Name>
     </ProjectReference>
