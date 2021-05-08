@@ -56,7 +56,8 @@ namespace Xna_Test.Game
             textureHolder = new TextureHolder(GraphicsDevice);
 
             player = new Player();
-            player.AssignTexture(textureHolder["HUMAN_MALE"]);
+            //player.AssignTexture(textureHolder["HUMAN_MALE"]);
+            player.AssignSpriteSheet(textureHolder["HUMAN_MALE"], GraphicsDevice);
             LoadedObjects.Add(player);
 
             // TODO: use this.Content to load your game content here
@@ -99,7 +100,7 @@ namespace Xna_Test.Game
 
             spriteBatch.Begin();
             foreach(var obj in LoadedObjects)
-                spriteBatch.Draw(obj.Texture, obj.Location, Color.White);
+                spriteBatch.Draw(obj.Frames[0], obj.Location, Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
