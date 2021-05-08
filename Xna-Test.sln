@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xna_Test.Game", "Xna-Test.Game\Xna_Test.Game\Xna_Test.Game.csproj", "{B3382B37-EF41-4AEC-9D1A-F92F2E2EA004}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Xna_Test.GameContent", "Xna-Test.Game\Xna_Test.GameContent\Xna_Test.GameContent.contentproj", "{B9E80B16-E1FB-4206-80A7-36CEECF3E814}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xna_Test.GameContent", "Xna-Test.Game\Xna_Test.GameContent\Xna_Test.GameContent.contentproj", "{B9E80B16-E1FB-4206-80A7-36CEECF3E814}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xna-Test.Artifacts", "Xna-Test.Artifacts\Xna-Test.Artifacts.csproj", "{CA053E57-7D2A-4AF9-8845-1418DAA9EF59}"
 EndProject

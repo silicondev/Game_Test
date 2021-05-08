@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Xna_Test.Artifacts.Physical;
 using Xna_Test.Artifacts.Physical.Entities;
 
 namespace Xna_Test.Game
@@ -19,6 +20,9 @@ namespace Xna_Test.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        TextureHolder textureHolder;
+
+        List<GameObject> LoadedObjects = new List<GameObject>();
 
         Player player;
 
@@ -49,8 +53,11 @@ namespace Xna_Test.Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            textureHolder = new TextureHolder(GraphicsDevice);
 
             player = new Player();
+            player.AssignTexture(textureHolder["HUMAN_MALE"]);
+            LoadedObjects.Add(player);
 
             // TODO: use this.Content to load your game content here
         }
@@ -89,6 +96,11 @@ namespace Xna_Test.Game
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            spriteBatch.Begin();
+            foreach(var obj in LoadedObjects)
+                spriteBatch.Draw(obj.Texture, obj.Location, Color.White);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
