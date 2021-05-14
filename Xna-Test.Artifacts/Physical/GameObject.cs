@@ -11,49 +11,46 @@ namespace Xna_Test.Artifacts.Physical
 {
     public abstract class GameObject
     {
+        public Guid Id { get; }
+        public string Name { get; }
         public Vector2 Location { get; set; }
-        public ObjectId Id { get; }
-        public List<Texture2D> Frames { get; private set; }
+        public ObjectId ObjectId { get; }
+        public Texture2D Sprite { get; }
+        public float Scale { get; set; } = 2f;
+        public float Rotation { get; set; } = 0f;
+        private List<Texture2D> _frames = new List<Texture2D>();
 
-        public GameObject(ObjectId id)
+        public GameObject(ObjectId id, string name, Vector2 loc, Texture2D sprite)
         {
-            Id = id;
-        }
-
-        public GameObject(ObjectId id, Vector2 loc)
-        {
-            Id = id;
+            ObjectId = id;
             Location = loc;
+            Sprite = sprite;
+            Name = name;
+            Id = Guid.NewGuid();
         }
 
-        public GameObject(ObjectId id, List<Texture2D> frames)
+        public GameObject(ObjectId id, string name, Vector2 loc, Texture2D sprite, float scale, float rotation)
         {
-            Id = id;
-            Frames = frames;
-        }
-
-        public GameObject(ObjectId id, Texture2D texture, GraphicsDevice graphics)
-        {
-            Id = id;
-            Frames = texture.GetSprites(16, graphics);
-        }
-
-        public GameObject(ObjectId id, Vector2 loc, List<Texture2D> frames)
-        {
-            Id = id;
+            ObjectId = id;
             Location = loc;
-            Frames = frames;
+            Sprite = sprite;
+            Name = name;
+            Id = Guid.NewGuid();
+
+            Scale = scale;
+            Rotation = rotation;
         }
 
-        public GameObject(ObjectId id, Vector2 loc, Texture2D texture, GraphicsDevice graphics)
+        public Texture2D GetFrame(int i, GraphicsDevice device)
         {
-            Id = id;
-            Location = loc;
-            Frames = texture.GetSprites(16, graphics);
+            if (_frames.Count == 0)
+            {
+                _frames = Sprite.GetSprites(16, device);
+            }
+            return _frames[i];
         }
 
-        public void AssignTexture(Texture2D texture, int frame = 0) => Frames.Set(texture, frame);
-        public void AssignSpriteSheet(Texture2D sheet, GraphicsDevice graphics) => Frames = sheet.GetSprites(16, graphics);
+        public void Move(float x, float y) => Location = new Vector2(Location.X + x, Location.Y + y);
     }
 
     public enum ObjectId

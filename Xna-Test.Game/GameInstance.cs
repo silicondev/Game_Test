@@ -18,11 +18,8 @@ namespace Xna_Test.Game
     /// </summary>
     public class GameInstance : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        GraphicsDeviceManager graphics; // KEEP THIS
         TextureHolder textureHolder;
-
-        List<GameObject> LoadedObjects = new List<GameObject>();
 
         Player player;
 
@@ -40,8 +37,10 @@ namespace Xna_Test.Game
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            textureHolder = new TextureHolder(GraphicsDevice);
+            Graphics.Initialize(GraphicsDevice);
 
+            player = new Player(new Vector2(0, 0), textureHolder["HUMAN_MALE"]);
             base.Initialize();
         }
 
@@ -51,16 +50,7 @@ namespace Xna_Test.Game
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            textureHolder = new TextureHolder(GraphicsDevice);
-
-            player = new Player();
-            //player.AssignTexture(textureHolder["HUMAN_MALE"]);
-            player.AssignSpriteSheet(textureHolder["HUMAN_MALE"], GraphicsDevice);
-            LoadedObjects.Add(player);
-
-            // TODO: use this.Content to load your game content here
+            Graphics.LoadObject(player);
         }
 
         /// <summary>
@@ -83,7 +73,8 @@ namespace Xna_Test.Game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+
+            Graphics.Get("main:player").Move(5, 5);
 
             base.Update(gameTime);
         }
@@ -95,14 +86,7 @@ namespace Xna_Test.Game
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
-            spriteBatch.Begin();
-            foreach(var obj in LoadedObjects)
-                spriteBatch.Draw(obj.Frames[0], obj.Location, Color.White);
-            spriteBatch.End();
-
+            Graphics.Draw();
             base.Draw(gameTime);
         }
     }
