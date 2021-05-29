@@ -21,6 +21,7 @@ namespace Xna_Test.Game
     {
         GraphicsDeviceManager graphics; // KEEP THIS
         TextureHolder textureHolder;
+        Keys[] KeysDown;
 
         Player player;
 
@@ -72,15 +73,22 @@ namespace Xna_Test.Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            KeysDown = Keyboard.GetState(PlayerIndex.One).GetPressedKeys();
 
-            if (Keyboard.GetState(PlayerIndex.One).GetPressedKeys().Contains(Keys.Escape))
-                this.Exit();
+            int x = 0;
+            int y = 0;
 
+            if (KeysDown.Contains(Keys.Left) && !KeysDown.Contains(Keys.Right))
+                x = -2;
+            else if (!KeysDown.Contains(Keys.Left) && KeysDown.Contains(Keys.Right))
+                x = 2;
 
-            Graphics.Get("main:player").Move(5, 5);
+            if (KeysDown.Contains(Keys.Up) && !KeysDown.Contains(Keys.Down))
+                y = -2;
+            else if (!KeysDown.Contains(Keys.Up) && KeysDown.Contains(Keys.Down))
+                y = 2;
+
+            Graphics.Get("main:player").Move(x, y);
 
             base.Update(gameTime);
         }
