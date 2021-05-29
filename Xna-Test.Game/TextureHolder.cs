@@ -6,41 +6,29 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xna_Test.Storage;
 
 namespace Xna_Test.Game
 {
     public class TextureHolder
     {
-        private GraphicsDevice _graphics;
         private static readonly string _start = @"Resources\Textures\";
-        private bool _preLoaded;
 
         private List<Texture> _textures = new List<Texture>()
         {
             new Texture("HUMAN_MALE", _start + @"Entity\Human\Human_Male.png")
         };
 
-        public TextureHolder(GraphicsDevice graphics, bool preLoad = false)
+        public TextureHolder(bool preLoad = false)
         {
-            _graphics = graphics;
-            _preLoaded = preLoad;
             if (preLoad)
                 foreach (var tex in _textures)
                 {
-                    tex.LoadTexture(_graphics);
+                    tex.LoadTexture();
                 }
         }
 
-        public Texture2D this[string path]
-        {
-            get
-            {
-                if (_preLoaded)
-                    return _textures.Find(x => x.Code == path).GetTexture();
-                else
-                    return _textures.Find(x => x.Code == path).GetTexture(_graphics);
-            }
-        }
+        public Texture2D this[string code] => _textures.Any(x => x.Code == code) ? _textures.First(x => x.Code == code).GetTexture() : null;
     }
 
     internal class Texture
@@ -56,27 +44,18 @@ namespace Xna_Test.Game
         private Texture2D _texture;
         private bool _hasTexture = false;
 
-        public Texture2D GetTexture(GraphicsDevice graphics)
-        {
-            if (!_hasTexture)
-            {
-                LoadTexture(graphics);
-            }
-            return _texture;
-        }
-
         public Texture2D GetTexture()
         {
             if (!_hasTexture)
-                return null;
+                LoadTexture();
             return _texture;
         }
 
-        public void LoadTexture(GraphicsDevice graphics)
+        public void LoadTexture()
         {
             using (var stream = new FileStream(_path, FileMode.Open))
             {
-                _texture = Texture2D.FromStream(graphics, stream);
+                _texture = Texture2D.FromStream(ProgramStore.GameGraphicsDevice, stream);
             }
             _hasTexture = true;
         }

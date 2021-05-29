@@ -11,34 +11,33 @@ namespace Xna_Test.Artifacts.Physical
 {
     public abstract class GameObject
     {
-        public Guid Id { get; }
-        public string Name { get; }
+        public Guid Id { get; private set; }
+        public string Name { get; private set; }
         public Vector2 Location { get; set; }
-        public ObjectId ObjectId { get; }
-        public Texture2D Sprite { get; }
+        public ObjectId ObjectId { get; } = ObjectId.EMPTY;
+        public Texture2D Sprite { get; private set; }
         public float Scale { get; set; } = 2f;
         public float Rotation { get; set; } = 0f;
         private List<Texture2D> _frames = new List<Texture2D>();
+        protected bool Usable { get; private set; } = false;
 
-        public GameObject(ObjectId id, string name, Vector2 loc, Texture2D sprite)
+        public GameObject(ObjectId id)
         {
             ObjectId = id;
-            Location = loc;
-            Sprite = sprite;
-            Name = name;
             Id = Guid.NewGuid();
         }
 
-        public GameObject(ObjectId id, string name, Vector2 loc, Texture2D sprite, float scale, float rotation)
+        public void Create(string name, Vector2 loc, Texture2D sprite, float scale = 2f, float rotation = 0f)
         {
-            ObjectId = id;
             Location = loc;
             Sprite = sprite;
             Name = name;
-            Id = Guid.NewGuid();
 
             Scale = scale;
             Rotation = rotation;
+
+            if (ObjectId != ObjectId.EMPTY && Id != null)
+                Usable = true;
         }
 
         public Texture2D GetFrame(int i, GraphicsDevice device)
@@ -55,6 +54,7 @@ namespace Xna_Test.Artifacts.Physical
 
     public enum ObjectId
     {
+        EMPTY,
         ENTITY_PLAYER,
         ENTITY_ENEMY_ZOMBIE,
     }

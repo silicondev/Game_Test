@@ -109,6 +109,10 @@
       <Project>{ca053e57-7d2a-4af9-8845-1418daa9ef59}</Project>
       <Name>Xna-Test.Artifacts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Xna-Test.Storage\Xna-Test.Storage.csproj">
+      <Project>{b664f2c5-3ad2-4119-b667-3286e207afb9}</Project>
+      <Name>Xna-Test.Storage</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

@@ -11,7 +11,7 @@ namespace Xna_Test.Artifacts.Physical.Entities
     public class Player : GameObject
     {
 
-        public Player(Vector2 loc, Texture2D sprite) : base(ObjectId.ENTITY_PLAYER, "main:player", loc, sprite)
+        public Player() : base(ObjectId.ENTITY_PLAYER)
         {
 
         }

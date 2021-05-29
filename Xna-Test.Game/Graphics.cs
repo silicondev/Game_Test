@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Xna_Test.Artifacts.Physical;
+using Xna_Test.Storage;
 
 namespace Xna_Test.Game
 {
@@ -22,10 +23,10 @@ namespace Xna_Test.Game
         
         public static GameObject Get(string name) => LoadedObjects.FirstOrDefault(x => x.Name == name);
 
-        public static void Initialize(GraphicsDevice device)
+        public static void Initialize()
         {
             LoadedObjects = new List<GameObject>();
-            Batch = new SpriteBatch(device);
+            Batch = new SpriteBatch(ProgramStore.GameGraphicsDevice);
         }
 
         public static void LoadObject(GameObject obj)

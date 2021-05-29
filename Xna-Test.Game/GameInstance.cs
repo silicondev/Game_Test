@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Xna_Test.Artifacts.Physical;
 using Xna_Test.Artifacts.Physical.Entities;
+using Xna_Test.Storage;
 
 namespace Xna_Test.Game
 {
@@ -37,10 +38,12 @@ namespace Xna_Test.Game
         /// </summary>
         protected override void Initialize()
         {
-            textureHolder = new TextureHolder(GraphicsDevice);
-            Graphics.Initialize(GraphicsDevice);
+            ProgramStore.GameGraphicsDevice = GraphicsDevice; // Keep this line
+            textureHolder = new TextureHolder();
+            Graphics.Initialize();
 
-            player = new Player(new Vector2(0, 0), textureHolder["HUMAN_MALE"]);
+            player = new Player();
+            player.Create("main:player", new Vector2(0, 0), textureHolder["HUMAN_MALE"]);
             base.Initialize();
         }
 
@@ -71,6 +74,9 @@ namespace Xna_Test.Game
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                this.Exit();
+
+            if (Keyboard.GetState(PlayerIndex.One).GetPressedKeys().Contains(Keys.Escape))
                 this.Exit();
 
 

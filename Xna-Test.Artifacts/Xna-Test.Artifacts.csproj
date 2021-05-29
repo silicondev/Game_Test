@@ -40,7 +40,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +56,10 @@
     <ProjectReference Include="..\Xna-Test.Extensions\Xna-Test.Extensions.csproj">
       <Project>{70fe1925-2561-4e7c-8d80-6e8ff6a60985}</Project>
       <Name>Xna-Test.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xna-Test.Storage\Xna-Test.Storage.csproj">
+      <Project>{b664f2c5-3ad2-4119-b667-3286e207afb9}</Project>
+      <Name>Xna-Test.Storage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
