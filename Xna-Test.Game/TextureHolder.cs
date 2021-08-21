@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xna_Test.Storage;
 
 namespace Xna_Test.Game
 {
@@ -16,7 +15,8 @@ namespace Xna_Test.Game
 
         private List<Texture> _textures = new List<Texture>()
         {
-            new Texture("HUMAN_MALE", _start + @"Entity\Human\Human_Male.png")
+            new Texture("HUMAN_MALE", _start + @"Entity\Human\Human_Male.png"),
+            new Texture("ENV_TILE", _start + @"Tile\env.png")
         };
 
         public TextureHolder(bool preLoad = false)

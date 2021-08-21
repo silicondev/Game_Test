@@ -9,14 +9,14 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using SiliconGameEngine.Objects;
 using Xna_Test.Artifacts.Physical;
-using Xna_Test.Storage;
 
 namespace Xna_Test.Game
 {
     public static class Graphics
     {
-        private static List<GameObject> LoadedObjects = new List<GameObject>();
+        public static List<GameObject> LoadedObjects { get; private set; } = new List<GameObject>();
         private static SpriteBatch Batch;
 
         public static BeginState BeginState { get; } = new BeginState();
@@ -61,7 +61,7 @@ namespace Xna_Test.Game
 
             foreach (var obj in LoadedObjects)
             {
-                Batch.Draw(obj.GetFrame(0, Batch.GraphicsDevice), obj.Location, null, Color.White, 0f, default, obj.Scale, SpriteEffects.None, obj.Rotation);
+                Batch.Draw(obj.GetFrame(ProgramStore.GameGraphicsDevice, 0), obj.Location, null, Color.White, 0f, default, obj.Scale, SpriteEffects.None, obj.Rotation);
             }
 
             Batch.End();

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Xna_Test.Storage
+namespace Xna_Test
 {
     public static class ProgramStore
     {
