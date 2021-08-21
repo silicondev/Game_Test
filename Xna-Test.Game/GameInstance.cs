@@ -99,6 +99,8 @@ namespace Xna_Test.Game
             else if (!KeysDown.Contains(Keys.Up) && KeysDown.Contains(Keys.Down))
                 y = 2;
 
+            Graphics.Get("main:player").Physics.DisableExertion("exertion:gravity");
+
             Graphics.Get("main:player").Physics.AddExertion(
                 new Exertion()
                 {
@@ -109,21 +111,21 @@ namespace Xna_Test.Game
 
             Graphics.Get("main:player").Iterate();
 
-            foreach (var obj in Graphics.LoadedObjects.Where(a => a.Physics.Exertions.Any(b => b.Name == "exertion:gravity")))
-            {
-                bool gravity = true;
-                foreach (var obj2 in new List<GameObject>(Graphics.LoadedObjects.Where(c => c.Name != obj.Name)))
-                {
-                    if (obj.NextBounds.Intersect(obj2.Bounds))
-                    {
-                        obj.Physics.DisableExertion("exertion:gravity");
-                        gravity = false;
-                        break;
-                    }
-                }
-                if (gravity)
-                    obj.Physics.EnableExertion("exertion:gravity");
-            }
+            //foreach (var obj in Graphics.LoadedObjects.Where(a => a.Physics.Exertions.Any(b => b.Name == "exertion:gravity")))
+            //{
+            //    bool gravity = true;
+            //    foreach (var obj2 in new List<GameObject>(Graphics.LoadedObjects.Where(c => c.Name != obj.Name)))
+            //    {
+            //        if (obj.NextBounds.Intersect(obj2.Bounds))
+            //        {
+            //            obj.Physics.DisableExertion("exertion:gravity");
+            //            gravity = false;
+            //            break;
+            //        }
+            //    }
+            //    if (gravity)
+            //        obj.Physics.EnableExertion("exertion:gravity");
+            //}
 
             base.Update(gameTime);
         }
